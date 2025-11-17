@@ -3,34 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Contact Us</h1>
-    <div class="form-box">
-        
 
-        <div class="field">
-            <label for="Name">Name</label>
-            <input type="text" id="Name">
-        </div>
+<h1>Contact Us</h1>
 
-        <div class="field">
-            <label for="Email">Email</label>
-            <input type="email" id="Email">
-        </div>
+<div class="form-box">
 
-        <div class="field">
-            <label for="Message">Message</label>
-            <textarea name="message" id="message"></textarea>
-        </div>
-        
-        <label>
-            <input type="checkbox" id="subscribe">
-             Subscribe to newsletter
-            </label>
-    <button><b>Send</b></button>
+    <div class="field">
+        <label for="Name">Name</label>
+        <input type="text" id="Name">
     </div>
+
+    <div class="field">
+        <label for="Email">Email</label>
+        <input type="email" id="Email">
+    </div>
+
+    <div class="field">
+        <label for="Message">Message</label>
+        <textarea id="message"></textarea>
+    </div>
+
+    <label>
+        <input type="checkbox" id="subscribe">
+        Subscribe to newsletter
+    </label>
+
+    <button id="submitBtn"><b>Send</b></button>
+
+</div>
+
+<script>
+document.getElementById("submitBtn").addEventListener("click", function () {
+
+    let name = document.getElementById("Name").value.trim();
+    let email = document.getElementById("Email").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    // Email regex pattern
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (name === "" || email === "" || message === "") {
+        alert("Please fill in all the fields.");
+        return;
+    }
+
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    alert("Form submitted successfully!");
+});
+</script>
+
 </body>
 </html>
