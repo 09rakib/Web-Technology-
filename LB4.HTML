@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+
+        .form-box {
+            background-color: #fff;
+            padding: 30px 40px;
+            border: 1px solid #030303;
+            border-radius: 10px;
+            width: 400px;
+            position: absolute;
+            top: 15%;
+            left: 15%;
+        }
+
+        .field {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .field label {
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .field input,
+        .field textarea {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid red;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #c21111;
+        }
+        .reminder-box {
+         background-color: #007cf9;
+        color: white;
+        padding: 5px 5px;
+         width: 250px;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-left: 40%;  
+        margin-top: 40px;
+        text-align: center;
+        
+}
+    </style>
+
+</head>
+<body>
+
+<h1>Contact Us</h1>
+<div class="reminder-box">Remember to fill in all fields!
+    </div>
+
+<form id="contactForm" class="form-box">
+
+    <div class="field">
+        <label for="Name">Name</label>
+        <input type="text" id="Name">
+    </div>
+
+    <div class="field">
+        <label for="Email">Email</label>
+        <input type="email" id="Email">
+    </div>
+
+    <div class="field">
+        <label for="Message">Message</label>
+        <textarea id="Message"></textarea>
+    </div>
+
+    <label style="margin-bottom: 10px; display: block;">
+        <input type="checkbox" id="subscribe"> Subscribe to newsletter
+    </label>
+    
+    
+
+    <button type="button" id="submitBtn"><b>Send</b></button>
+    
+</form>
+
+<script>
+document.getElementById("submitBtn").addEventListener("click", function () {
+
+    let name = document.getElementById("Name").value.trim();
+    let email = document.getElementById("Email").value.trim();
+    let message = document.getElementById("Message").value.trim();
+    let subscribe = document.getElementById("subscribe").checked;
+
+    // Email regex pattern
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (name === "" || email === "" || message === "") {
+        alert("Please fill in all the fields.");
+        return;
+    }
+
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    if (!subscribe) {
+        alert("Please check the subscription box.");
+        return;
+    }
+
+    alert("Form submitted successfully!");
+});
+</script>
+
+</body>
+</html>
